@@ -6,7 +6,7 @@ package dev.modusami.invmanagementsys.exceptions;
  * @author  Michael-Andre Odusami
  * @version @version 2024.01.29
  */
-@SuppressWarnings("serial")
+
 public class InvalidPriceException extends RuntimeException
 {
     /**
