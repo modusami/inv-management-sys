@@ -83,7 +83,6 @@ public class InventoryController {
         }
     }
 
-    @CrossOrigin
     @GetMapping
     public ResponseEntity<Map<InventoryItemId, InventoryItem>> getInventory() {
         Map<InventoryItemId, InventoryItem> inventory = inventoryService.getInventory();
