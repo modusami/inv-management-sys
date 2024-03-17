@@ -32,6 +32,15 @@ public class Product {
         return name;
     }
 
+    /**
+     * Setter for the name
+     */
+    public void setName(String str) {
+        if (str != null) {
+            name = str;
+        }
+    }
+
 
     /**
      * Getter for the category name
