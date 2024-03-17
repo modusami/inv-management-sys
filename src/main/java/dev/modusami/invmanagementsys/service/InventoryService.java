@@ -29,7 +29,30 @@ public class InventoryService {
      * Constructor
      */
     public InventoryService(){
+        populateInventory();
+    }
 
+    public void populateInventory(){
+        // Create Product instances
+        Product product1 = new Product("Laptop", "Electronics", "High-performance laptop with SSD storage", 999.99);
+        Product product2 = new Product("Smartphone", "Electronics", "Latest smartphone model with high-resolution camera", 799.99);
+        Product product3 = new Product("Headphones", "Electronics", "Wireless headphones with noise-cancellation feature", 199.99);
+        Product product4 = new Product("Backpack", "Fashion", "Durable backpack suitable for daily use", 49.99);
+        Product product5 = new Product("Running Shoes", "Sports", "Comfortable running shoes with advanced cushioning technology", 129.99);
+
+        // Create InventoryItem instances
+        InventoryItem item1 = new InventoryItem(product1, new InventoryItemId());
+        InventoryItem item2 = new InventoryItem(product2, new InventoryItemId());
+        InventoryItem item3 = new InventoryItem(product3, new InventoryItemId());
+        InventoryItem item4 = new InventoryItem(product4, new InventoryItemId());
+        InventoryItem item5 = new InventoryItem(product5, new InventoryItemId());
+
+        // Add items to inventory HashMap
+        inventory.put(item1.getId(), item1);
+        inventory.put(item2.getId(), item2);
+        inventory.put(item3.getId(), item3);
+        inventory.put(item4.getId(), item4);
+        inventory.put(item5.getId(), item5);
     }
 
     /**
