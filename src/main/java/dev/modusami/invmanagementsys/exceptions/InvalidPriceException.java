@@ -3,8 +3,8 @@ package dev.modusami.invmanagementsys.exceptions;
 /**
  * A class of runtime exceptions thrown by methods to indicate that a price is invalid
  *
- * @author modusami
- * @version 4.0
+ * @author  Michael-Andre Odusami
+ * @version @version 2024.01.29
  */
 @SuppressWarnings("serial")
 public class InvalidPriceException extends RuntimeException
