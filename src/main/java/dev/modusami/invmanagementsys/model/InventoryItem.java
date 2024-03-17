@@ -14,6 +14,8 @@ public class InventoryItem {
     private int monthOrdered;
     private int yearOrdered;
 
+    private InventoryItemId id;
+
     /**
      * Generates the current Date and sets the order dates
      */
@@ -23,6 +25,10 @@ public class InventoryItem {
         setDayOrdered(date.getDayOfMonth());
         setYearOrdered(date.getYear());
 
+    }
+
+    public InventoryItemId getId(){
+        return id;
     }
 
     /**
@@ -51,20 +57,13 @@ public class InventoryItem {
         yearOrdered = year;
     }
 
-
-    /**
-     * Default Constructor
-     */
-    public InventoryItem() {
-        this(new Product());
-    }
-
     /**
      * Constructor
      * @param p a Product
      */
-    public InventoryItem(Product p) {
+    public InventoryItem(Product p, InventoryItemId i) {
         product = p;
+        id = i;
         generateDate();
     }
 
@@ -132,10 +131,5 @@ public class InventoryItem {
 
     private String toDate() {
         return " " + monthOrdered + "/" + dayOrdered + "/" + yearOrdered;
-    }
-
-    public static void main(String[] args) {
-        InventoryItem i = new InventoryItem(new Product());
-        System.out.println(i.toString());
     }
 }
