@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @CrossOrigin("*") // to allow from all domains
 @RestController
@@ -74,10 +76,22 @@ public class InventoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<InventoryItem> getItem(@PathVariable InventoryItemId id) {
-        InventoryItem item = inventoryService.getItem(id);
+    public ResponseEntity<InventoryItem> getItem(@PathVariable String id) {
+        UUID uuid = UUID.fromString(id);
+        InventoryItemId inventoryItemId = new InventoryItemId(uuid);
+        InventoryItem item = inventoryService.getItem(inventoryItemId);
         if (item != null) {
             return ResponseEntity.ok(item);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<InventoryItem>> getItemsByName(@PathVariable String name) {
+        List<InventoryItem> items = inventoryService.getItemsByName(name);
+        if (!items.isEmpty()) {
+            return ResponseEntity.ok(items);
         } else {
             return ResponseEntity.notFound().build();
         }
