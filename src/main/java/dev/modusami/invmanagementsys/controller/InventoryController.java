@@ -97,6 +97,17 @@ public class InventoryController {
         }
     }
 
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<InventoryItem>> getItemsByCategory(@PathVariable String category)
+    {
+        List<InventoryItem> items = inventoryService.getItemsByCategory(category);
+        if (!items.isEmpty()) {
+            return ResponseEntity.ok(items);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<Map<InventoryItemId, InventoryItem>> getInventory() {
         Map<InventoryItemId, InventoryItem> inventory = inventoryService.getInventory();
