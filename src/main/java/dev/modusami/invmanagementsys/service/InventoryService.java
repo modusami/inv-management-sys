@@ -183,7 +183,22 @@ public class InventoryService {
     public List<InventoryItem> getItemsByName(String name) {
         List<InventoryItem> itemsByName = new ArrayList<>();
         for (InventoryItem item : inventory.values()) {
-            if (item.getProduct().getName().equalsIgnoreCase(name)) {
+            if (item.getProduct().getName().equalsIgnoreCase(name.toLowerCase())) {
+                itemsByName.add(item);
+            }
+        }
+        return itemsByName;
+    }
+
+    /**
+     * Gets a list of items by category
+     * @param name of category
+     * @return a list of inventory category
+     */
+    public List<InventoryItem> getItemsByCategory(String name) {
+        List<InventoryItem> itemsByName = new ArrayList<>();
+        for (InventoryItem item : inventory.values()) {
+            if (item.getProduct().getCategory().equalsIgnoreCase(name.toLowerCase())) {
                 itemsByName.add(item);
             }
         }
