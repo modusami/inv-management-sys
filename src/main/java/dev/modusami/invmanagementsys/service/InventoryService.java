@@ -5,7 +5,9 @@ import dev.modusami.invmanagementsys.model.InventoryItemId;
 import dev.modusami.invmanagementsys.model.InventoryItem;
 import dev.modusami.invmanagementsys.model.Product;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -39,13 +41,16 @@ public class InventoryService {
         Product product3 = new Product("Headphones", "Electronics", "Wireless headphones with noise-cancellation feature", 199.99);
         Product product4 = new Product("Backpack", "Fashion", "Durable backpack suitable for daily use", 49.99);
         Product product5 = new Product("Running Shoes", "Sports", "Comfortable running shoes with advanced cushioning technology", 129.99);
-
+        Product product6 = new Product("Running Shoes", "Sports (Rebook)", "Comfortable running shoes with advanced cushioning technology", 111.99);
+        Product product7 = new Product("Running Shoes", "Sports (Nike)", "Comfortable running shoes with advanced cushioning technology", 1111.99);
         // Create InventoryItem instances
         InventoryItem item1 = new InventoryItem(product1, new InventoryItemId());
         InventoryItem item2 = new InventoryItem(product2, new InventoryItemId());
         InventoryItem item3 = new InventoryItem(product3, new InventoryItemId());
         InventoryItem item4 = new InventoryItem(product4, new InventoryItemId());
         InventoryItem item5 = new InventoryItem(product5, new InventoryItemId());
+        InventoryItem item6 = new InventoryItem(product6, new InventoryItemId());
+        InventoryItem item7 = new InventoryItem(product7, new InventoryItemId());
 
         // Add items to inventory HashMap
         inventory.put(item1.getId(), item1);
@@ -53,6 +58,8 @@ public class InventoryService {
         inventory.put(item3.getId(), item3);
         inventory.put(item4.getId(), item4);
         inventory.put(item5.getId(), item5);
+        inventory.put(item6.getId(), item6);
+        inventory.put(item7.getId(), item7);
     }
 
     /**
@@ -155,11 +162,32 @@ public class InventoryService {
         return status;
     }
 
+
+    /**
+     * Gets a single item
+     * @param id
+     * @return
+     */
     public InventoryItem getItem(InventoryItemId id) {
         if (inventory.containsKey(id)) {
             return inventory.get(id);
         }
         return null;
+    }
+
+    /**
+     * Gets a list of items by name
+     * @param name of inventory
+     * @return a list of inventory items
+     */
+    public List<InventoryItem> getItemsByName(String name) {
+        List<InventoryItem> itemsByName = new ArrayList<>();
+        for (InventoryItem item : inventory.values()) {
+            if (item.getProduct().getName().equalsIgnoreCase(name)) {
+                itemsByName.add(item);
+            }
+        }
+        return itemsByName;
     }
 
     public HashMap<InventoryItemId, InventoryItem> getInventory() {
