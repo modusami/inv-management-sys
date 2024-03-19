@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@CrossOrigin("*") // to allow from all domains
+@CrossOrigin
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
@@ -45,38 +45,20 @@ public class InventoryController {
         }
     }
 
-    @PutMapping("/{id}/name")
-    public ResponseEntity<Void> editItemName(@PathVariable InventoryItemId id, @RequestBody String newName) {
-        Status status = inventoryService.editItemName(id, newName);
-        if (status == Status.SUCCESS) {
-            return ResponseEntity.noContent().build();
-        } else {
+    @PutMapping
+    public ResponseEntity<String> updateItem(@RequestBody InventoryItem item){
+        if(inventoryService.updateItem(item) == Status.SUCCESS){
+            return ResponseEntity.ok("OKAY");
+        }
+        else{
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("/{id}/category")
-    public ResponseEntity<Void> editItemCategory(@PathVariable InventoryItemId id, @RequestBody String newCategory) {
-        Status status = inventoryService.editItemCategory(id, newCategory);
-        if (status == Status.SUCCESS) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PutMapping("/{id}/description")
-    public ResponseEntity<Void> editItemDescription(@PathVariable InventoryItemId id, @RequestBody String newDescription) {
-        Status status = inventoryService.editItemDescription(id, newDescription);
-        if (status == Status.SUCCESS) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<InventoryItem> getItem(@PathVariable String id) {
+
         UUID uuid = UUID.fromString(id);
         InventoryItemId inventoryItemId = new InventoryItemId(uuid);
         InventoryItem item = inventoryService.getItem(inventoryItemId);
@@ -85,6 +67,7 @@ public class InventoryController {
         } else {
             return ResponseEntity.notFound().build();
         }
+
     }
 
     @GetMapping("/name/{name}")
