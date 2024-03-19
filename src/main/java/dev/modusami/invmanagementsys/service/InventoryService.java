@@ -34,33 +34,7 @@ public class InventoryService {
         populateInventory();
     }
 
-    public void populateInventory(){
-        // Create Product instances
-        Product product1 = new Product("Laptop", "Electronics", "High-performance laptop with SSD storage", 999.99);
-        Product product2 = new Product("Smartphone", "Electronics", "Latest smartphone model with high-resolution camera", 799.99);
-        Product product3 = new Product("Headphones", "Electronics", "Wireless headphones with noise-cancellation feature", 199.99);
-        Product product4 = new Product("Backpack", "Fashion", "Durable backpack suitable for daily use", 49.99);
-        Product product5 = new Product("Running Shoes", "Sports", "Comfortable running shoes with advanced cushioning technology", 129.99);
-        Product product6 = new Product("Running Shoes", "Sports (Rebook)", "Comfortable running shoes with advanced cushioning technology", 111.99);
-        Product product7 = new Product("Running Shoes", "Sports (Nike)", "Comfortable running shoes with advanced cushioning technology", 1111.99);
-        // Create InventoryItem instances
-        InventoryItem item1 = new InventoryItem(product1, new InventoryItemId());
-        InventoryItem item2 = new InventoryItem(product2, new InventoryItemId());
-        InventoryItem item3 = new InventoryItem(product3, new InventoryItemId());
-        InventoryItem item4 = new InventoryItem(product4, new InventoryItemId());
-        InventoryItem item5 = new InventoryItem(product5, new InventoryItemId());
-        InventoryItem item6 = new InventoryItem(product6, new InventoryItemId());
-        InventoryItem item7 = new InventoryItem(product7, new InventoryItemId());
 
-        // Add items to inventory HashMap
-        inventory.put(item1.getId(), item1);
-        inventory.put(item2.getId(), item2);
-        inventory.put(item3.getId(), item3);
-        inventory.put(item4.getId(), item4);
-        inventory.put(item5.getId(), item5);
-        inventory.put(item6.getId(), item6);
-        inventory.put(item7.getId(), item7);
-    }
 
     /**
      * Gets the amount of items in inventory
@@ -210,6 +184,16 @@ public class InventoryService {
     }
 
 
+    public Status updateItem(InventoryItem item){
+        Status status = Status.FAILED;
+        if (containsItem(item.getId())){
+            inventory.put(item.getId(), item);
+            status = Status.SUCCESS;
+        }
+
+        return status;
+    }
+
     /**
      * Responsible For Deleting an item
      * @param id in the inventory
@@ -286,6 +270,74 @@ public class InventoryService {
      */
     public void clear() {
         inventory.clear();
+    }
+
+    public void populateInventory() {
+        // Create Product instances
+        Product product1 = new Product("Laptop", "Electronics", "High-performance laptop with SSD storage", 999.99);
+        Product product2 = new Product("Smartphone", "Electronics", "Latest smartphone model with high-resolution camera", 799.99);
+        Product product3 = new Product("Headphones", "Electronics", "Wireless headphones with noise-cancellation feature", 199.99);
+        Product product4 = new Product("Backpack", "Fashion", "Durable backpack suitable for daily use", 49.99);
+        Product product5 = new Product("Running Shoes", "Sports", "Comfortable running shoes with advanced cushioning technology", 129.99);
+        Product product6 = new Product("Running Shoes", "Sports (Reebok)", "Comfortable running shoes with advanced cushioning technology", 111.99);
+        Product product7 = new Product("Running Shoes", "Sports (Nike)", "Comfortable running shoes with advanced cushioning technology", 1111.99);
+        Product product8 = new Product("Smartwatch", "Electronics", "Fitness-tracking smartwatch with heart rate monitor", 299.99);
+        Product product9 = new Product("Wireless Speaker", "Electronics", "Portable Bluetooth speaker with long battery life", 79.99);
+        Product product10 = new Product("Digital Camera", "Electronics", "High-resolution digital camera with optical zoom", 499.99);
+        Product product11 = new Product("Sunglasses", "Fashion", "Stylish sunglasses with UV protection", 89.99);
+        Product product12 = new Product("Yoga Mat", "Sports", "Non-slip yoga mat with carrying strap", 39.99);
+        Product product13 = new Product("Fitness Tracker", "Electronics", "Wearable fitness tracker for monitoring activity and sleep", 99.99);
+        Product product14 = new Product("Bluetooth Headset", "Electronics", "Hands-free Bluetooth headset for phone calls", 59.99);
+        Product product15 = new Product("Travel Backpack", "Fashion", "Lightweight backpack with multiple compartments", 69.99);
+        Product product16 = new Product("Basketball", "Sports", "Official size and weight basketball", 24.99);
+        Product product17 = new Product("External Hard Drive", "Electronics", "Portable external hard drive with 1TB storage", 59.99);
+        Product product18 = new Product("Gaming Console", "Electronics", "Latest gaming console with 4K graphics", 499.99);
+        Product product19 = new Product("Wireless Mouse", "Electronics", "Ergonomic wireless mouse for computer use", 29.99);
+        Product product20 = new Product("Smartwatch", "Electronics (Apple)", "Fitness-tracking smartwatch with heart rate monitor", 399.99);
+
+        // Create InventoryItem instances
+        InventoryItem item1 = new InventoryItem(product1, new InventoryItemId());
+        InventoryItem item2 = new InventoryItem(product2, new InventoryItemId());
+        InventoryItem item3 = new InventoryItem(product3, new InventoryItemId());
+        InventoryItem item4 = new InventoryItem(product4, new InventoryItemId());
+        InventoryItem item5 = new InventoryItem(product5, new InventoryItemId());
+        InventoryItem item6 = new InventoryItem(product6, new InventoryItemId());
+        InventoryItem item7 = new InventoryItem(product7, new InventoryItemId());
+        InventoryItem item8 = new InventoryItem(product8, new InventoryItemId());
+        InventoryItem item9 = new InventoryItem(product9, new InventoryItemId());
+        InventoryItem item10 = new InventoryItem(product10, new InventoryItemId());
+        InventoryItem item11 = new InventoryItem(product11, new InventoryItemId());
+        InventoryItem item12 = new InventoryItem(product12, new InventoryItemId());
+        InventoryItem item13 = new InventoryItem(product13, new InventoryItemId());
+        InventoryItem item14 = new InventoryItem(product14, new InventoryItemId());
+        InventoryItem item15 = new InventoryItem(product15, new InventoryItemId());
+        InventoryItem item16 = new InventoryItem(product16, new InventoryItemId());
+        InventoryItem item17 = new InventoryItem(product17, new InventoryItemId());
+        InventoryItem item18 = new InventoryItem(product18, new InventoryItemId());
+        InventoryItem item19 = new InventoryItem(product19, new InventoryItemId());
+        InventoryItem item20 = new InventoryItem(product20, new InventoryItemId());
+
+        // Add items to inventory HashMap
+        inventory.put(item1.getId(), item1);
+        inventory.put(item2.getId(), item2);
+        inventory.put(item3.getId(), item3);
+        inventory.put(item4.getId(), item4);
+        inventory.put(item5.getId(), item5);
+        inventory.put(item6.getId(), item6);
+        inventory.put(item7.getId(), item7);
+        inventory.put(item8.getId(), item8);
+        inventory.put(item9.getId(), item9);
+        inventory.put(item10.getId(), item10);
+        inventory.put(item11.getId(), item11);
+        inventory.put(item12.getId(), item12);
+        inventory.put(item13.getId(), item13);
+        inventory.put(item14.getId(), item14);
+        inventory.put(item15.getId(), item15);
+        inventory.put(item16.getId(), item16);
+        inventory.put(item17.getId(), item17);
+        inventory.put(item18.getId(), item18);
+        inventory.put(item19.getId(), item19);
+        inventory.put(item20.getId(), item20);
     }
 
 }
