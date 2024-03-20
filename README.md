@@ -1,23 +1,42 @@
-### Enhanced Inventory System:
+# React + Vite
 
-**User Features:**
-1. **User Authentication**: Ensure secure access with user authentication.
-2. **Search and Filter**: Allow users to quickly find items by name, category, or attributes.
-3. **Order Management**: Enable users to create, track, and edit orders with detailed information.
-4. **Order History**: Provide a history of past orders for easy reference and reordering.
-5. **Inventory Alerts**: Notify users of low inventory levels or items running out of stock.
+# Features
 
-**System Features:**
-1. **Real-Time Updates**: Keep inventory levels updated in real-time to prevent discrepancies.
-2. **Analytics and Reporting**: Generate reports and visualizations for inventory insights.
-3. **Integration**: Seamlessly integrate with external systems for smoother operations.
-4. **Automatic CSV Export**: Schedule exports of inventory data to CSV files for easy access.
-5. **Backup and Restore**: Ensure data integrity with backup and restore functionality.
+-   [] populate the inventory with items in the backkend (reminder)
 
-**User Interface:**
-1. **Intuitive Dashboard**: Provide a user-friendly dashboard with key metrics and alerts.
-2. **Responsive Design**: Ensure compatibility across devices for ease of use.
-3. **Interactive Elements**: Facilitate user interactions with intuitive forms and buttons.
-4. **Customization**: Allow users to personalize their dashboard and notifications.
+### Strictly Design
 
-By implementing these enhancements, the inventory system becomes more efficient, user-friendly, and adaptable to users' needs.
+-   [✅] a page representing a form to create an inventory item
+
+    -   [✅] a form with a name, category, description, and price section
+    -   [✅] a button to create an inventory item
+    -   [✅] a message indicating an inventory has been created
+
+-   [✅] a page representing reading (displaying) the inventory items
+
+    -   [✅] a button to display all inventory items
+    -   [✅] a button to display a single inventory button by the following dropdown items [id, name, category]
+    -   [✅] a button to display the quantity of a single item by category or name
+    -   [] a button to display the quantity of the entire inventory
+    -   [✅] an input bar to enter in the id, name or category
+    -   [✅] a space to display the inventory item/items
+    -   [] a button to sort the products by (id, name, category, or price)
+    -   [✅] when a product is displayed, it should only display the id and name of the product
+        -   [✅] on click of a button, display the rest of that information underneath the product
+    -   [] a button to export all inventory items to a single pdf
+
+-   [✅] a page representing updating the inventory item
+
+    -   [✅] an input bar to enter the id of an item
+    -   [✅] a button to click search to find the item
+    -   [✅] a message representing if the item was found
+    -   [✅] a space to display the inventory item/items
+    -   [✅] a space to display new inventory item info (name, category, description, id)
+    -   [✅] a button to update the inventory item
+
+-   [] a page representing deleting the inventory item
+    -   [] an input bar to enter the id of an item
+    -   [] a preview of the item before deleting - (on click of a button, display the rest of that information underneath the product
+    -   [] a button to export all inventory items to a single pdf) <- reference to earlier feature.
+
+### Strictly Functionality
